@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motel/screens/root_app.dart';
+import 'package:flutter_motel/screens/root.dart';
+import 'package:flutter_motel/screens/welcome.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Motel Booking',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        useMaterial3: true,
-      ),
-      home: const RootApp(),
-    );
+        title: 'Motel Booking',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+            useMaterial3: true,
+            textTheme:
+                GoogleFonts.spaceGroteskTextTheme(Theme.of(context).textTheme)),
+        initialRoute: '/welcome',
+        routes: <String, WidgetBuilder>{
+          '/root': (BuildContext context) => const RootApp(),
+          '/welcome': (BuildContext context) => Welcome(),
+        });
   }
 }
